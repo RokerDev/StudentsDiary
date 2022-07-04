@@ -30,9 +30,9 @@
         {
             this.lbID = new System.Windows.Forms.Label();
             this.tbId = new System.Windows.Forms.TextBox();
-            this.tbName = new System.Windows.Forms.TextBox();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.tbSurname = new System.Windows.Forms.TextBox();
+            this.tbLastName = new System.Windows.Forms.TextBox();
             this.lbSurname = new System.Windows.Forms.Label();
             this.tbMath = new System.Windows.Forms.TextBox();
             this.lbMath = new System.Windows.Forms.Label();
@@ -63,40 +63,41 @@
             // 
             this.tbId.Location = new System.Drawing.Point(92, 6);
             this.tbId.Name = "tbId";
+            this.tbId.ReadOnly = true;
             this.tbId.Size = new System.Drawing.Size(168, 20);
             this.tbId.TabIndex = 1;
             // 
-            // tbName
+            // tbFirstName
             // 
-            this.tbName.Location = new System.Drawing.Point(92, 32);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(168, 20);
-            this.tbName.TabIndex = 3;
+            this.tbFirstName.Location = new System.Drawing.Point(92, 32);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.Size = new System.Drawing.Size(168, 20);
+            this.tbFirstName.TabIndex = 3;
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
             this.lbName.Location = new System.Drawing.Point(12, 35);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(35, 13);
+            this.lbName.Size = new System.Drawing.Size(57, 13);
             this.lbName.TabIndex = 2;
-            this.lbName.Text = "Name";
+            this.lbName.Text = "First Name";
             // 
-            // tbSurname
+            // tbLastName
             // 
-            this.tbSurname.Location = new System.Drawing.Point(92, 58);
-            this.tbSurname.Name = "tbSurname";
-            this.tbSurname.Size = new System.Drawing.Size(168, 20);
-            this.tbSurname.TabIndex = 5;
+            this.tbLastName.Location = new System.Drawing.Point(92, 58);
+            this.tbLastName.Name = "tbLastName";
+            this.tbLastName.Size = new System.Drawing.Size(168, 20);
+            this.tbLastName.TabIndex = 5;
             // 
             // lbSurname
             // 
             this.lbSurname.AutoSize = true;
             this.lbSurname.Location = new System.Drawing.Point(12, 61);
             this.lbSurname.Name = "lbSurname";
-            this.lbSurname.Size = new System.Drawing.Size(49, 13);
+            this.lbSurname.Size = new System.Drawing.Size(58, 13);
             this.lbSurname.TabIndex = 4;
-            this.lbSurname.Text = "Surname";
+            this.lbSurname.Text = "Last Name";
             // 
             // tbMath
             // 
@@ -126,9 +127,9 @@
             this.lbTech.AutoSize = true;
             this.lbTech.Location = new System.Drawing.Point(12, 113);
             this.lbTech.Name = "lbTech";
-            this.lbTech.Size = new System.Drawing.Size(54, 13);
+            this.lbTech.Size = new System.Drawing.Size(63, 13);
             this.lbTech.TabIndex = 8;
-            this.lbTech.Text = "Technical";
+            this.lbTech.Text = "Technology";
             // 
             // tbPol
             // 
@@ -203,7 +204,7 @@
             this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnAccept
             // 
@@ -213,7 +214,7 @@
             this.btnAccept.TabIndex = 19;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.button2_Click);
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // AddEditStudents
             // 
@@ -234,9 +235,9 @@
             this.Controls.Add(this.lbTech);
             this.Controls.Add(this.tbMath);
             this.Controls.Add(this.lbMath);
-            this.Controls.Add(this.tbSurname);
+            this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.lbSurname);
-            this.Controls.Add(this.tbName);
+            this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbID);
@@ -251,9 +252,9 @@
 
         private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.TextBox tbId;
-        private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.TextBox tbSurname;
+        private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.Label lbSurname;
         private System.Windows.Forms.TextBox tbMath;
         private System.Windows.Forms.Label lbMath;

@@ -55,12 +55,34 @@ namespace StudentsDiary
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvTable.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Highlight the student you want to remove.");
+                return;
+            }
 
+            var selectedStudent = dgvTable.SelectedRows[0];
+
+            var confirmDelete = 
+            MessageBox.Show($"Do you really want to remove" +
+                $" {selectedStudent.Cells[1].Value.ToString()} " +
+                $"{selectedStudent.Cells[2].Value.ToString()} from diary", 
+                "Removing Student", MessageBoxButtons.OKCancel);
+
+            if (confirmDelete == DialogResult.OK)
+            {
+                var students = DeserializeFile();
+                students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
+                SerializeToFile(students);
+                dgvTable.DataSource = students;
+
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            var students = DeserializeFile();
+            dgvTable.DataSource = students;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -72,6 +94,18 @@ namespace StudentsDiary
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (dgvTable.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Highlight the student you want to edit.");
+                return;
+            }
+
+            var selectedStudent = Convert.ToInt32(dgvTable.SelectedRows[0].Cells[0].Value);
+            var addEditStudent = new AddEditStudents(selectedStudent);
+            addEditStudent.ShowDialog();
+
+            
+
 
         }
 
