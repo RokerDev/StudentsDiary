@@ -65,7 +65,9 @@ namespace StudentsDiary
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            // forma dodawania to po prostu klasa wiec trzeba utworzyc obiekt klasy
+            var addEditStudents = new AddEditStudents();
+            addEditStudents.ShowDialog();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
