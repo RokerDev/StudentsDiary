@@ -19,6 +19,8 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
+            var students = DeserializeFile();
+            dgvTable.DataSource = students;
         }
 
         public void SerializeToFile(List<Student> students)
@@ -70,5 +72,6 @@ namespace StudentsDiary
         {
 
         }
+
     }
 }
