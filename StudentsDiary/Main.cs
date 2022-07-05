@@ -20,6 +20,7 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
+            RefreshTable();
             AssingNamesToColumnHeaders();
 
         }
