@@ -22,6 +22,12 @@ namespace StudentsDiary
             InitializeComponent();
             var students = _fileHelper.DeserializeFromFile();
             dgvTable.DataSource = students;
+            AssingNamesToColumnHeaders();
+
+        }
+
+        private void AssingNamesToColumnHeaders()
+        {
             dgvTable.Columns[1].HeaderText = "First Name";
             dgvTable.Columns[2].HeaderText = "Last Name";
             dgvTable.Columns[3].HeaderText = "Mathematic";
