@@ -1,28 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace StudentsDiary
 {
     public partial class Main : Form
     {
-        private string _filePath = Path.Combine(Environment.CurrentDirectory, "students.txt");
-        private FileHelper<List<Student>> _fileHelper = new FileHelper<List<Student>>(Path.Combine(Environment.CurrentDirectory, "students.txt"));
+        private FileHelper<List<Student>> _fileHelper = new FileHelper<List<Student>>(Program.FilePath);
 
         public Main()
         {
             InitializeComponent();
             RefreshTable();
             AssingNamesToColumnHeaders();
-
         }
 
         private void RefreshTable()
@@ -53,21 +44,28 @@ namespace StudentsDiary
             }
 
             var selectedStudent = dgvTable.SelectedRows[0];
+            var selectedStudentId = Convert.ToInt32(selectedStudent.Cells[0].Value);
+            var selectedStudentFName = selectedStudent.Cells[1].Value.ToString();
+            var selectedStudentLName = selectedStudent.Cells[2].Value.ToString();
 
             var confirmDelete = 
             MessageBox.Show($"Do you really want to remove" +
-                $" {selectedStudent.Cells[1].Value.ToString()} " +
-                $"{selectedStudent.Cells[2].Value.ToString()} from diary", 
+                $" {selectedStudentFName} " +
+                $"{selectedStudentLName} from diary", 
                 "Removing Student", MessageBoxButtons.OKCancel);
 
             if (confirmDelete == DialogResult.OK)
             {
-                var students = _fileHelper.DeserializeFromFile();
-                students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
-                _fileHelper.SerializeToFile(students);
+                DeleteStudent(selectedStudentId);
                 RefreshTable();
-
             }
+        }
+
+        private void DeleteStudent(int studentId)
+        {
+            var students = _fileHelper.DeserializeFromFile();
+            students.RemoveAll(x => x.Id == studentId);
+            _fileHelper.SerializeToFile(students);            
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -76,8 +74,7 @@ namespace StudentsDiary
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {
-            
+        {            
             // forma dodawania to po prostu klasa wiec trzeba utworzyc obiekt klasy
             var addEditStudents = new AddEditStudent();
             addEditStudents.Text = "Add Student";
@@ -96,10 +93,6 @@ namespace StudentsDiary
             var addEditStudent = new AddEditStudent(selectedStudent);
             addEditStudent.Text = "Edit Student";
             addEditStudent.ShowDialog();
-
-            
-
-
         }
 
     }

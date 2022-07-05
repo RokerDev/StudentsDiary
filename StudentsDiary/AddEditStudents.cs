@@ -1,73 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 
 namespace StudentsDiary
 {
     public partial class AddEditStudent : Form
     {
-        private string _filePath = Path.Combine(Environment.CurrentDirectory, "students.txt");
-        private FileHelper<List<Student>> _fileHelper = new FileHelper<List<Student>>(Path.Combine(Environment.CurrentDirectory, "students.txt"));
-
-
+        private FileHelper<List<Student>> _fileHelper = new FileHelper<List<Student>>(Program.FilePath);
+        private Student _student;
         private int _studentId;
+
         public AddEditStudent(int id = 0)
         {
             _studentId = id;
             InitializeComponent();
-            if (id != 0) // zostal wybrany jakis student czyli chcesz edytowac
-            {
-                var students = _fileHelper.DeserializeFromFile();
-                var student = students.FirstOrDefault(x => x.Id == id);
-                if (student == null)
-                    throw new Exception("There is no student with the Id provided.");
-                
-                tbId.Text = student.Id.ToString();
-                tbFirstName.Text = student.FirstName;
-                tbLastName.Text = student.LastName;
-                tbRemarks.Text = student.Remarks;
-                tbMath.Text = student.Mathematic;
-                tbProg.Text = student.Programing;
-                tbPol.Text = student.PolishLanguage;
-                tbEng.Text = student.EnglishLanguage;
-                tbTech.Text = student.Technology;
-            }
-            tbFirstName.Select();
-            
+            if (_studentId != 0) // zostal wybrany jakis student czyli chcesz edytowac
+                EditStudentData();
+
+            tbFirstName.Select();            
         }
 
-        
+        private void EditStudentData()
+        {
+            var students = _fileHelper.DeserializeFromFile();
+            _student = students.FirstOrDefault(x => x.Id == _studentId);
+            if (_student == null)
+                throw new Exception("There is no student with the Id provided.");
+
+            AssignStudentDataToTextBox();
+        }
+
+        private void AssignStudentDataToTextBox()
+        {
+            tbId.Text = _student.Id.ToString();
+            tbFirstName.Text = _student.FirstName;
+            tbLastName.Text = _student.LastName;
+            tbRemarks.Text = _student.Remarks;
+            tbMath.Text = _student.Mathematic;
+            tbProg.Text = _student.Programing;
+            tbPol.Text = _student.PolishLanguage;
+            tbEng.Text = _student.EnglishLanguage;
+            tbTech.Text = _student.Technology;
+        }        
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnAccept_Click(object sender, EventArgs e)
+        private Student CreateNewStudent()
         {
-            var students = _fileHelper.DeserializeFromFile();
-
-            if (_studentId == 0)
-            {
-                var highestStudentId = students.OrderByDescending(x => x.Id).FirstOrDefault();
-
-                _studentId = highestStudentId == null ? 1 : highestStudentId.Id + 1;
-            }
-            else
-            {
-                students.RemoveAll(x => x.Id == _studentId);
-            }
-            
-
-            var student = new Student
+            return new Student
             {
                 Id = _studentId,
                 FirstName = tbFirstName.Text,
@@ -77,14 +63,26 @@ namespace StudentsDiary
                 Remarks = tbRemarks.Text,
                 Programing = tbProg.Text,
                 Mathematic = tbMath.Text,
-                Technology =tbTech.Text
+                Technology = tbTech.Text
             };
+        }
 
-            students.Add(student);
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            var students = _fileHelper.DeserializeFromFile();
+
+            if (_studentId == 0)
+            {
+                var highestStudentId = students.OrderByDescending(x => x.Id).FirstOrDefault();
+                _studentId = highestStudentId == null ? 1 : highestStudentId.Id + 1;
+            }
+            else
+                students.RemoveAll(x => x.Id == _studentId);
+
+            students.Add(CreateNewStudent());
 
             _fileHelper.SerializeToFile(students);
             Close();
         }
-
     }
 }
