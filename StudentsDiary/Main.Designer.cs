@@ -82,15 +82,22 @@
             // 
             // dgvTable
             // 
-            this.dgvTable.AllowUserToOrderColumns = true;
+            this.dgvTable.AllowUserToAddRows = false;
+            this.dgvTable.AllowUserToDeleteRows = false;
+            this.dgvTable.AllowUserToResizeColumns = false;
+            this.dgvTable.AllowUserToResizeRows = false;
             this.dgvTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvTable.Location = new System.Drawing.Point(12, 41);
             this.dgvTable.Name = "dgvTable";
-            this.dgvTable.Size = new System.Drawing.Size(713, 435);
+            this.dgvTable.RowHeadersVisible = false;
+            this.dgvTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTable.Size = new System.Drawing.Size(928, 435);
             this.dgvTable.TabIndex = 4;
             // 
             // Main
@@ -98,12 +105,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(737, 488);
+            this.ClientSize = new System.Drawing.Size(952, 488);
             this.Controls.Add(this.dgvTable);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
+            this.MaximumSize = new System.Drawing.Size(968, 527);
+            this.MinimumSize = new System.Drawing.Size(968, 527);
             this.Name = "Main";
             this.Text = "Students Diary";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();

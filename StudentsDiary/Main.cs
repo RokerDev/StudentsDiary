@@ -21,6 +21,14 @@ namespace StudentsDiary
             InitializeComponent();
             var students = DeserializeFile();
             dgvTable.DataSource = students;
+            dgvTable.Columns[1].HeaderText = "First Name";
+            dgvTable.Columns[2].HeaderText = "Last Name";
+            dgvTable.Columns[3].HeaderText = "Mathematic";
+            dgvTable.Columns[4].HeaderText = "Technology";
+            dgvTable.Columns[5].HeaderText = "Polish Language";
+            dgvTable.Columns[6].HeaderText = "English Language";
+            dgvTable.Columns[7].HeaderText = "Programing";
+            dgvTable.Columns[8].HeaderText = "Remarks";
         }
 
         public void SerializeToFile(List<Student> students)
