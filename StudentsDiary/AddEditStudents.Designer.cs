@@ -1,6 +1,6 @@
 ﻿namespace StudentsDiary
 {
-    partial class AddEditStudents
+    partial class AddEditStudent
     {
         /// <summary>
         /// Required designer variable.
@@ -216,7 +216,7 @@
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
-            // AddEditStudents
+            // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +241,10 @@
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbID);
-            this.Name = "AddEditStudents";
+            this.MaximumSize = new System.Drawing.Size(287, 395);
+            this.MinimumSize = new System.Drawing.Size(287, 395);
+            this.Name = "AddEditStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditStudents";
             this.ResumeLayout(false);
             this.PerformLayout();

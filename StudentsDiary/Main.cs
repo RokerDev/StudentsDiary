@@ -15,11 +15,12 @@ namespace StudentsDiary
     public partial class Main : Form
     {
         private string _filePath = Path.Combine(Environment.CurrentDirectory, "students.txt");
+        private FileHelper<List<Student>> _fileHelper = new FileHelper<List<Student>>(Path.Combine(Environment.CurrentDirectory, "students.txt"));
 
         public Main()
         {
             InitializeComponent();
-            var students = DeserializeFile();
+            var students = _fileHelper.DeserializeFromFile();
             dgvTable.DataSource = students;
             dgvTable.Columns[1].HeaderText = "First Name";
             dgvTable.Columns[2].HeaderText = "Last Name";
@@ -31,36 +32,7 @@ namespace StudentsDiary
             dgvTable.Columns[8].HeaderText = "Remarks";
         }
 
-        public void SerializeToFile(List<Student> students)
-        {
-            var serializer = new XmlSerializer(typeof(List<Student>));
-            using (var streamWriter = new StreamWriter(_filePath))
-            {
-                serializer.Serialize(streamWriter, students);
-                streamWriter.Close();
-            }
-        }
         
-        public List<Student> DeserializeFile()
-        {
-            if (!File.Exists(_filePath))
-            {
-                return new List<Student>();
-            }
-            var serializer = new XmlSerializer(typeof(List<Student>));
-
-            using (var streamReader = new StreamReader(_filePath))
-            {
-                var students = (List<Student>)serializer.Deserialize(streamReader);
-                streamReader.Close();
-
-                return students;
-            }
-
-        }
-
-
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvTable.SelectedRows.Count == 0)
@@ -79,9 +51,9 @@ namespace StudentsDiary
 
             if (confirmDelete == DialogResult.OK)
             {
-                var students = DeserializeFile();
+                var students = _fileHelper.DeserializeFromFile();
                 students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
-                SerializeToFile(students);
+                _fileHelper.SerializeToFile(students);
                 dgvTable.DataSource = students;
 
             }
@@ -89,14 +61,16 @@ namespace StudentsDiary
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            var students = DeserializeFile();
+            var students = _fileHelper.DeserializeFromFile();
             dgvTable.DataSource = students;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
             // forma dodawania to po prostu klasa wiec trzeba utworzyc obiekt klasy
-            var addEditStudents = new AddEditStudents();
+            var addEditStudents = new AddEditStudent();
+            addEditStudents.Text = "Add Student";
             addEditStudents.ShowDialog();
         }
 
@@ -109,7 +83,8 @@ namespace StudentsDiary
             }
 
             var selectedStudent = Convert.ToInt32(dgvTable.SelectedRows[0].Cells[0].Value);
-            var addEditStudent = new AddEditStudents(selectedStudent);
+            var addEditStudent = new AddEditStudent(selectedStudent);
+            addEditStudent.Text = "Edit Student";
             addEditStudent.ShowDialog();
 
             
