@@ -20,10 +20,14 @@ namespace StudentsDiary
         public Main()
         {
             InitializeComponent();
-            var students = _fileHelper.DeserializeFromFile();
-            dgvTable.DataSource = students;
             AssingNamesToColumnHeaders();
 
+        }
+
+        private void RefreshTable()
+        {
+            var students = _fileHelper.DeserializeFromFile();
+            dgvTable.DataSource = students;
         }
 
         private void AssingNamesToColumnHeaders()
@@ -60,15 +64,14 @@ namespace StudentsDiary
                 var students = _fileHelper.DeserializeFromFile();
                 students.RemoveAll(x => x.Id == Convert.ToInt32(selectedStudent.Cells[0].Value));
                 _fileHelper.SerializeToFile(students);
-                dgvTable.DataSource = students;
+                RefreshTable();
 
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            var students = _fileHelper.DeserializeFromFile();
-            dgvTable.DataSource = students;
+            RefreshTable();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
