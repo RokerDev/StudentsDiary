@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace StudentsDiary
@@ -15,6 +14,7 @@ namespace StudentsDiary
             RefreshTable();
             AssingNamesToColumnHeaders();
         }
+
 
         private void RefreshTable()
         {
@@ -34,7 +34,7 @@ namespace StudentsDiary
             dgvTable.Columns[8].HeaderText = "Remarks";
         }
 
-        
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvTable.SelectedRows.Count == 0)
@@ -48,10 +48,9 @@ namespace StudentsDiary
             var selectedStudentFName = selectedStudent.Cells[1].Value.ToString();
             var selectedStudentLName = selectedStudent.Cells[2].Value.ToString();
 
-            var confirmDelete = 
-            MessageBox.Show($"Do you really want to remove" +
-                $" {selectedStudentFName} " +
-                $"{selectedStudentLName} from diary", 
+            var confirmDelete =
+            MessageBox.Show($"Do you really want to remove " +
+                $"{selectedStudentFName} {selectedStudentLName} from diary".Trim(),
                 "Removing Student", MessageBoxButtons.OKCancel);
 
             if (confirmDelete == DialogResult.OK)
@@ -65,7 +64,7 @@ namespace StudentsDiary
         {
             var students = _fileHelper.DeserializeFromFile();
             students.RemoveAll(x => x.Id == studentId);
-            _fileHelper.SerializeToFile(students);            
+            _fileHelper.SerializeToFile(students);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -74,11 +73,17 @@ namespace StudentsDiary
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {            
+        {
             // forma dodawania to po prostu klasa wiec trzeba utworzyc obiekt klasy
-            var addEditStudents = new AddEditStudent();
-            addEditStudents.Text = "Add Student";
-            addEditStudents.ShowDialog();
+            var addEditStudent = new AddEditStudent();
+            addEditStudent.Text = "Add Student";
+            addEditStudent.ShowDialog();
+            addEditStudent.FormClosing += AddEditStudent_FormClosing;
+        }
+
+        private void AddEditStudent_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            RefreshTable();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -93,6 +98,7 @@ namespace StudentsDiary
             var addEditStudent = new AddEditStudent(selectedStudent);
             addEditStudent.Text = "Edit Student";
             addEditStudent.ShowDialog();
+            addEditStudent.FormClosing += AddEditStudent_FormClosing;
         }
 
     }
