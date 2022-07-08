@@ -45,9 +45,9 @@
             this.tbProg = new System.Windows.Forms.TextBox();
             this.lbProg = new System.Windows.Forms.Label();
             this.tbRemarks = new System.Windows.Forms.RichTextBox();
-            this.lbRemarks = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.chbActivities = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lbID
@@ -181,24 +181,15 @@
             // 
             // tbRemarks
             // 
-            this.tbRemarks.Location = new System.Drawing.Point(92, 218);
+            this.tbRemarks.Location = new System.Drawing.Point(91, 241);
             this.tbRemarks.Name = "tbRemarks";
             this.tbRemarks.Size = new System.Drawing.Size(168, 96);
             this.tbRemarks.TabIndex = 16;
             this.tbRemarks.Text = "";
             // 
-            // lbRemarks
-            // 
-            this.lbRemarks.AutoSize = true;
-            this.lbRemarks.Location = new System.Drawing.Point(12, 218);
-            this.lbRemarks.Name = "lbRemarks";
-            this.lbRemarks.Size = new System.Drawing.Size(49, 13);
-            this.lbRemarks.TabIndex = 17;
-            this.lbRemarks.Text = "Remarks";
-            // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(92, 320);
+            this.btnCancel.Location = new System.Drawing.Point(92, 343);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 18;
@@ -208,7 +199,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(184, 320);
+            this.btnAccept.Location = new System.Drawing.Point(184, 343);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 19;
@@ -216,14 +207,24 @@
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
+            // chbActivities
+            // 
+            this.chbActivities.AutoSize = true;
+            this.chbActivities.Location = new System.Drawing.Point(91, 218);
+            this.chbActivities.Name = "chbActivities";
+            this.chbActivities.Size = new System.Drawing.Size(68, 17);
+            this.chbActivities.TabIndex = 20;
+            this.chbActivities.Text = "Activities";
+            this.chbActivities.UseVisualStyleBackColor = true;
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 356);
+            this.ClientSize = new System.Drawing.Size(271, 372);
+            this.Controls.Add(this.chbActivities);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lbRemarks);
             this.Controls.Add(this.tbRemarks);
             this.Controls.Add(this.tbProg);
             this.Controls.Add(this.lbProg);
@@ -241,8 +242,8 @@
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbID);
-            this.MaximumSize = new System.Drawing.Size(287, 395);
-            this.MinimumSize = new System.Drawing.Size(287, 395);
+            this.MaximumSize = new System.Drawing.Size(287, 411);
+            this.MinimumSize = new System.Drawing.Size(287, 411);
             this.Name = "AddEditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditStudents";
@@ -270,8 +271,8 @@
         private System.Windows.Forms.TextBox tbProg;
         private System.Windows.Forms.Label lbProg;
         private System.Windows.Forms.RichTextBox tbRemarks;
-        private System.Windows.Forms.Label lbRemarks;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.CheckBox chbActivities;
     }
 }

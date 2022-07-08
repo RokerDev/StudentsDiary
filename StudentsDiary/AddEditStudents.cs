@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,7 +19,7 @@ namespace StudentsDiary
             if (_studentId != 0) // zostal wybrany jakis student czyli chcesz edytowac
                 EditStudentData();
 
-            tbFirstName.Select();            
+            tbFirstName.Select();
         }
 
         private void EditStudentData()
@@ -44,7 +43,7 @@ namespace StudentsDiary
             tbPol.Text = _student.PolishLanguage;
             tbEng.Text = _student.EnglishLanguage;
             tbTech.Text = _student.Technology;
-        }        
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -82,7 +81,9 @@ namespace StudentsDiary
             students.Add(CreateNewStudent());
 
             _fileHelper.SerializeToFile(students);
+
             Close();
         }
+
     }
 }
