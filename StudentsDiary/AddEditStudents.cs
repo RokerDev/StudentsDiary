@@ -16,6 +16,7 @@ namespace StudentsDiary
         {
             _studentId = id;
             InitializeComponent();
+            Main.SetComboBoxOptions(cbGroupId, Student.ListGroupId);
             if (_studentId != 0) // zostal wybrany jakis student czyli chcesz edytowac
                 EditStudentData();
 
@@ -37,12 +38,14 @@ namespace StudentsDiary
             tbId.Text = _student.Id.ToString();
             tbFirstName.Text = _student.FirstName;
             tbLastName.Text = _student.LastName;
+            cbGroupId.Text = _student.GroupId;
             tbRemarks.Text = _student.Remarks;
             tbMath.Text = _student.Mathematic;
             tbProg.Text = _student.Programing;
             tbPol.Text = _student.PolishLanguage;
             tbEng.Text = _student.EnglishLanguage;
             tbTech.Text = _student.Technology;
+            chbActivities.Checked = _student.Activities;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -57,12 +60,14 @@ namespace StudentsDiary
                 Id = _studentId,
                 FirstName = tbFirstName.Text,
                 LastName = tbLastName.Text,
+                GroupId = (string)cbGroupId.SelectedItem,
                 EnglishLanguage = tbEng.Text,
                 PolishLanguage = tbPol.Text,
                 Remarks = tbRemarks.Text,
                 Programing = tbProg.Text,
                 Mathematic = tbMath.Text,
-                Technology = tbTech.Text
+                Technology = tbTech.Text,
+                Activities = chbActivities.Checked
             };
         }
 

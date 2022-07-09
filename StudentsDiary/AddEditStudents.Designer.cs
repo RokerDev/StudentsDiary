@@ -48,6 +48,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.chbActivities = new System.Windows.Forms.CheckBox();
+            this.lbGruopId = new System.Windows.Forms.Label();
+            this.cbGroupId = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbID
@@ -101,7 +103,7 @@
             // 
             // tbMath
             // 
-            this.tbMath.Location = new System.Drawing.Point(92, 84);
+            this.tbMath.Location = new System.Drawing.Point(92, 111);
             this.tbMath.Name = "tbMath";
             this.tbMath.Size = new System.Drawing.Size(168, 20);
             this.tbMath.TabIndex = 7;
@@ -109,7 +111,7 @@
             // lbMath
             // 
             this.lbMath.AutoSize = true;
-            this.lbMath.Location = new System.Drawing.Point(12, 87);
+            this.lbMath.Location = new System.Drawing.Point(12, 114);
             this.lbMath.Name = "lbMath";
             this.lbMath.Size = new System.Drawing.Size(62, 13);
             this.lbMath.TabIndex = 6;
@@ -117,7 +119,7 @@
             // 
             // tbTech
             // 
-            this.tbTech.Location = new System.Drawing.Point(92, 110);
+            this.tbTech.Location = new System.Drawing.Point(92, 137);
             this.tbTech.Name = "tbTech";
             this.tbTech.Size = new System.Drawing.Size(168, 20);
             this.tbTech.TabIndex = 9;
@@ -125,7 +127,7 @@
             // lbTech
             // 
             this.lbTech.AutoSize = true;
-            this.lbTech.Location = new System.Drawing.Point(12, 113);
+            this.lbTech.Location = new System.Drawing.Point(12, 140);
             this.lbTech.Name = "lbTech";
             this.lbTech.Size = new System.Drawing.Size(63, 13);
             this.lbTech.TabIndex = 8;
@@ -133,7 +135,7 @@
             // 
             // tbPol
             // 
-            this.tbPol.Location = new System.Drawing.Point(92, 136);
+            this.tbPol.Location = new System.Drawing.Point(92, 163);
             this.tbPol.Name = "tbPol";
             this.tbPol.Size = new System.Drawing.Size(168, 20);
             this.tbPol.TabIndex = 11;
@@ -141,7 +143,7 @@
             // lbPol
             // 
             this.lbPol.AutoSize = true;
-            this.lbPol.Location = new System.Drawing.Point(12, 139);
+            this.lbPol.Location = new System.Drawing.Point(12, 166);
             this.lbPol.Name = "lbPol";
             this.lbPol.Size = new System.Drawing.Size(62, 13);
             this.lbPol.TabIndex = 10;
@@ -149,7 +151,7 @@
             // 
             // tbEng
             // 
-            this.tbEng.Location = new System.Drawing.Point(92, 162);
+            this.tbEng.Location = new System.Drawing.Point(92, 189);
             this.tbEng.Name = "tbEng";
             this.tbEng.Size = new System.Drawing.Size(168, 20);
             this.tbEng.TabIndex = 13;
@@ -157,7 +159,7 @@
             // lbEng
             // 
             this.lbEng.AutoSize = true;
-            this.lbEng.Location = new System.Drawing.Point(12, 165);
+            this.lbEng.Location = new System.Drawing.Point(12, 192);
             this.lbEng.Name = "lbEng";
             this.lbEng.Size = new System.Drawing.Size(68, 13);
             this.lbEng.TabIndex = 12;
@@ -165,7 +167,7 @@
             // 
             // tbProg
             // 
-            this.tbProg.Location = new System.Drawing.Point(92, 188);
+            this.tbProg.Location = new System.Drawing.Point(92, 215);
             this.tbProg.Name = "tbProg";
             this.tbProg.Size = new System.Drawing.Size(168, 20);
             this.tbProg.TabIndex = 15;
@@ -173,7 +175,7 @@
             // lbProg
             // 
             this.lbProg.AutoSize = true;
-            this.lbProg.Location = new System.Drawing.Point(12, 191);
+            this.lbProg.Location = new System.Drawing.Point(12, 218);
             this.lbProg.Name = "lbProg";
             this.lbProg.Size = new System.Drawing.Size(60, 13);
             this.lbProg.TabIndex = 14;
@@ -181,7 +183,7 @@
             // 
             // tbRemarks
             // 
-            this.tbRemarks.Location = new System.Drawing.Point(91, 241);
+            this.tbRemarks.Location = new System.Drawing.Point(91, 264);
             this.tbRemarks.Name = "tbRemarks";
             this.tbRemarks.Size = new System.Drawing.Size(168, 96);
             this.tbRemarks.TabIndex = 16;
@@ -189,7 +191,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(92, 343);
+            this.btnCancel.Location = new System.Drawing.Point(91, 366);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 18;
@@ -199,7 +201,7 @@
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(184, 343);
+            this.btnAccept.Location = new System.Drawing.Point(184, 366);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 19;
@@ -210,18 +212,37 @@
             // chbActivities
             // 
             this.chbActivities.AutoSize = true;
-            this.chbActivities.Location = new System.Drawing.Point(91, 218);
+            this.chbActivities.Location = new System.Drawing.Point(92, 241);
             this.chbActivities.Name = "chbActivities";
             this.chbActivities.Size = new System.Drawing.Size(68, 17);
             this.chbActivities.TabIndex = 20;
             this.chbActivities.Text = "Activities";
             this.chbActivities.UseVisualStyleBackColor = true;
             // 
+            // lbGruopId
+            // 
+            this.lbGruopId.AutoSize = true;
+            this.lbGruopId.Location = new System.Drawing.Point(12, 87);
+            this.lbGruopId.Name = "lbGruopId";
+            this.lbGruopId.Size = new System.Drawing.Size(48, 13);
+            this.lbGruopId.TabIndex = 21;
+            this.lbGruopId.Text = "Group Id";
+            // 
+            // cbGroupId
+            // 
+            this.cbGroupId.FormattingEnabled = true;
+            this.cbGroupId.Location = new System.Drawing.Point(92, 84);
+            this.cbGroupId.Name = "cbGroupId";
+            this.cbGroupId.Size = new System.Drawing.Size(168, 21);
+            this.cbGroupId.TabIndex = 22;
+            // 
             // AddEditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 372);
+            this.ClientSize = new System.Drawing.Size(271, 401);
+            this.Controls.Add(this.cbGroupId);
+            this.Controls.Add(this.lbGruopId);
             this.Controls.Add(this.chbActivities);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnCancel);
@@ -242,8 +263,6 @@
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbID);
-            this.MaximumSize = new System.Drawing.Size(287, 411);
-            this.MinimumSize = new System.Drawing.Size(287, 411);
             this.Name = "AddEditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddEditStudents";
@@ -274,5 +293,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.CheckBox chbActivities;
+        private System.Windows.Forms.Label lbGruopId;
+        private System.Windows.Forms.ComboBox cbGroupId;
     }
 }
