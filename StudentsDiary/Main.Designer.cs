@@ -33,6 +33,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvTable = new System.Windows.Forms.DataGridView();
+            this.cbSorting = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,12 +101,22 @@
             this.dgvTable.Size = new System.Drawing.Size(928, 435);
             this.dgvTable.TabIndex = 4;
             // 
+            // cbSorting
+            // 
+            this.cbSorting.FormattingEnabled = true;
+            this.cbSorting.Location = new System.Drawing.Point(336, 14);
+            this.cbSorting.Name = "cbSorting";
+            this.cbSorting.Size = new System.Drawing.Size(75, 21);
+            this.cbSorting.TabIndex = 5;
+            this.cbSorting.SelectedIndexChanged += new System.EventHandler(this.cbSorting_SelectedIndexChanged);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(952, 488);
+            this.Controls.Add(this.cbSorting);
             this.Controls.Add(this.dgvTable);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -127,6 +138,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.DataGridView dgvTable;
+        private System.Windows.Forms.ComboBox cbSorting;
     }
 }
 
