@@ -48,11 +48,6 @@ namespace StudentsDiary
             chbActivities.Checked = _student.Activities;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private Student CreateNewStudent()
         {
             return new Student
@@ -69,6 +64,12 @@ namespace StudentsDiary
                 Technology = tbTech.Text,
                 Activities = chbActivities.Checked
             };
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

@@ -17,6 +17,12 @@ namespace StudentsDiary
             AssingNamesToColumnHeaders();
             SetComboBoxOptions(cbSorting, _sortingOptions);
             AddSortingOptions("All");
+            SetInitialSortOption();
+            
+        }
+
+        private void SetInitialSortOption()
+        {
             cbSorting.SelectedItem = "All";
         }
 
@@ -124,15 +130,6 @@ namespace StudentsDiary
 
         private void cbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //var students = _fileHelper.DeserializeFromFile();
-
-            //if ((string)cbSorting.SelectedItem != "All")
-            //{
-            //    var sortedStudents = students.Where(x => x.GroupId == (string)cbSorting.SelectedItem).ToList();
-            //    dgvTable.DataSource = sortedStudents;
-            //}
-            //else
-            //    dgvTable.DataSource = students;
             RefreshTable();
         }
     }
