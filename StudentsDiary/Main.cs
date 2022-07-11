@@ -17,6 +17,7 @@ namespace StudentsDiary
             AssingNamesToColumnHeaders();
             SetComboBoxOptions(cbSorting, _sortingOptions);
             AddSortingOptions("All");
+            cbSorting.SelectedItem = "All";
         }
 
         private void AddSortingOptions(string option)
@@ -55,8 +56,17 @@ namespace StudentsDiary
 
         private void RefreshTable()
         {
+            //var students = _fileHelper.DeserializeFromFile();
+            //dgvTable.DataSource = students;
             var students = _fileHelper.DeserializeFromFile();
-            dgvTable.DataSource = students;
+
+            if ((string)cbSorting.SelectedItem != "All")
+            {
+                var sortedStudents = students.Where(x => x.GroupId == (string)cbSorting.SelectedItem).ToList();
+                dgvTable.DataSource = sortedStudents;
+            }
+            else
+                dgvTable.DataSource = students;
         }
 
 
@@ -114,15 +124,16 @@ namespace StudentsDiary
 
         private void cbSorting_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var students = _fileHelper.DeserializeFromFile();
+            //var students = _fileHelper.DeserializeFromFile();
 
-            if ((string)cbSorting.SelectedItem != "All")
-            {
-                var sortedStudents = students.Where(x => x.GroupId == (string)cbSorting.SelectedItem).ToList();
-                dgvTable.DataSource = sortedStudents;
-            }
-            else
-                dgvTable.DataSource = students;
+            //if ((string)cbSorting.SelectedItem != "All")
+            //{
+            //    var sortedStudents = students.Where(x => x.GroupId == (string)cbSorting.SelectedItem).ToList();
+            //    dgvTable.DataSource = sortedStudents;
+            //}
+            //else
+            //    dgvTable.DataSource = students;
+            RefreshTable();
         }
     }
 }
